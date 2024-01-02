@@ -1,0 +1,6 @@
+- name: Install PHPMyAdmin
+  apt:
+    name: phpmyadmin
+    state: present
+  vars:
+    - phpmyadmin_dbconfig_path: "/etc/dbconfig-common/{{ phpmyadmin_package }}/conf.d"
