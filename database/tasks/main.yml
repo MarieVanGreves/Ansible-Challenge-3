@@ -1,0 +1,32 @@
+- name: Install MariaDB
+  apt:
+    name: mariadb-server
+    state: present
+
+- name: Start MariaDB service
+  service:
+    name: mariadb
+    state: started
+
+- name: Secure MariaDB installation
+  mysql_secure_installation:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    new_password: "{{ mysql_root_password }}"
+    confirm_password: "{{ mysql_root_password }}"
+
+- name: Create a test database
+  mysql_db:
+    name: testdb
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Create a test user
+  mysql_user:
+    name: testuser
+    password: "{{ mysql_user_password }}"
+    priv: "*.*:ALL"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
