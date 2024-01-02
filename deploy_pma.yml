@@ -1,0 +1,7 @@
+- name: Deploy PHPMyAdmin and MariaDB
+  hosts: your_target_host
+  become: yes
+
+  roles:
+    - phpmyadmin
+    - database
