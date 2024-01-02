@@ -1,5 +1,5 @@
 - name: Deploy PHPMyAdmin and MariaDB
-  hosts: your_target_host
+  hosts: ploop_ton_ip
   become: yes
 
   roles:
